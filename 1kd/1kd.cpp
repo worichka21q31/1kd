@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 
 template<typename Type>
@@ -20,7 +20,7 @@ int main()
 {
 	int size = 5;
 
-	int* ptr = new int[size];
+	char* ptr = new char[size];
 
 	size = 6;
 	NewArr(ptr, size);
@@ -30,7 +30,7 @@ int main()
 
 	std::cout << std::endl;
 
-	UpArr(ptr, size, 8);
+	UpArr(ptr, size, 'f');
 	PrintArr(ptr, size);
 
 
@@ -43,13 +43,13 @@ template<typename Type>
 void UpArr(Type*& ptr, int &size, Type element)
 {
 	size++;
-	int* buf = new int[size];
+	Type* buf = new Type[size];
 	for (size_t i = 0; i < size - 1; i++)
 	{
 		buf[i] = ptr[i];
 	}
 	delete[] ptr;
-	ptr = new int[size];
+	ptr = new Type[size];
 	for (size_t i = 0; i < size - 1; i++)
 	{
 		ptr[i] = buf[i];
@@ -61,7 +61,7 @@ template<typename Type>
 void NewArr(Type* &ptr, int size) //Немного не понял, что значит "распределение" памяти. Прочел и вроде это так должно выглядить 
 {
 	delete[] ptr;
-	ptr = new int[size];
+	ptr = new Type[size];
 }
 template<typename Type>
 void Delete(Type * ptr)
